@@ -12,63 +12,44 @@
   <body class="bg-slate-50">
     @include('component/header')
     <div class="container mx-auto main-container">
+      @foreach ($archives as $archive)
       <div class="shadow-md rounded-md content-tbm bg-white">
-        <div class="post-owner grid grid-cols-12 gap-1 justify-start">
-          <div class="owner-photo col-span-2 place-self-center">
+        <div class="post-owner grid grid-cols-9 gap-1 justify-start">
+          <div class="owner-photo col-start-1 col-span-2 place-self-center">
             <div class="photo">
               <img class="photo-img rounded-full border outline-black" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg" alt="profile">
             </div>
           </div>
-          <div class="owner-username col-span-3 place-self-center">
-            <span class="inline-block align-baseline text-sm font-serif	text-gray-600">@Revantama</span>
+          <div class="owner-username col-start-3 place-self-center">
+            <span class="align-baseline text-sm font-serif	text-gray-600">{{ '@' . $archive->user->name }}</span>
           </div>
         </div>
         <div class="post-content">
-          <iframe width="100%" height="300" src="https://www.youtube.com/embed/KbkyqccX8ss" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          @if ($archive->archive_type === 1)
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/{{$archive->archive_origin}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          @endif
         </div>
         <div class="post-caption p-1">
           <div class="action-button">
-            <button class="rounded-md bg-red-500 text-sm text-white p-1 px-4 mx-1">Liked</button>
-            <button class="rounded-md bg-blue-500 text-sm text-white p-1 px-4 mx-1">Source</button>
+            <button class="rounded-md bg-red-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1">Liked</button>
+            <button class="rounded-md bg-blue-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1" onclick="copySource({{ "\"" .$archive->source. "\""}})" >Source</button>
           </div>
           <div class="caption p-1">
-            <p class="text-xs font-serif text-gray-400 likes-count">20.000 likes</p>
-            <p class="text-sm font-serif text-justify text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-             </p>
-            <p class="text-xs font-serif text-gray-500 text-right post-date">Jun 01, 2023</p>
+            <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> likes</p>
+            <p class="text-sm font-serif text-justify text-gray-500" style="margin-bottom:0">
+              {{$archive->captions}}
+            </p>
+            <p class="text-xs font-serif text-gray-500 text-right post-date" style="margin-bottom:0">{{date("d M Y, H:i", strtotime($archive->created_at))}}</p>
           </div>
         </div>
       </div>
-
+      @endforeach
       <div class="shadow-md rounded-md content-tbm bg-white">
-        <div class="post-owner grid grid-cols-12 gap-1 justify-start">
-          <div class="owner-photo col-span-2 place-self-center">
-            <div class="photo">
-              <img class="photo-img rounded-full border outline-black" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg" alt="profile">
-            </div>
-          </div>
-          <div class="owner-username col-span-3 place-self-center">
-            <span class="inline-block align-baseline text-sm font-serif	text-gray-600">@Revantama</span>
-          </div>
+        <div class="next-button py-2 mx-2">
+            <center>
+              {{ $archives->links() }}
+            </center>
         </div>
-        <div class="post-content">
-          <img width="100%" src="https://cdn-cms.pgimgs.com/areainsider/2023/02/Alt-Text-Masjid-Istiqlal-Mengenal-Kemegahan-dan-Sejarah-Masjid-Paling-Terkenal.png">
-        </div>
-        <div class="post-caption p-1">
-          <div class="action-button">
-            <button class="rounded-md bg-slate-400 text-sm text-white p-1 px-4 mx-1">Like</button>
-            <button class="rounded-md bg-blue-500 text-sm text-white p-1 px-4 mx-1">Source</button>
-          </div>
-          <div class="caption p-1">
-            <p class="text-xs font-serif text-gray-400 likes-count">20.000 likes</p>
-            <p class="text-sm font-serif text-justify text-gray-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-             </p>
-            <p class="text-xs font-serif text-gray-500 text-right post-date">Jun 01, 2023</p>
-          </div>
-        </div>
-      </div>
-      <div class="next-button">
-          <center><button class="shadow-md rounded-md bg-white text-sm text-gray-500 p-1 px-4 mx-1">Click Here For More Posts!</button></center>
       </div>
     </div>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>

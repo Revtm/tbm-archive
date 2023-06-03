@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\UserArchive;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -13,6 +14,16 @@ class ArchiveController extends Controller{
             ->orderByDesc('created_at')
             ->simplePaginate(15);
     return $archives;
+  }
+
+  public function getAllArchives(){
+    $archives = UserArchive::simplePaginate(15);
+    return $archives;
+  }
+
+  public function getOwnArchivesCount($id){
+    $archivesCount = UserArchive::where('user_id', '=', $id)->count();
+    return $archivesCount;
   }
 
   public function archivePost(Request $request){
@@ -58,6 +69,8 @@ class ArchiveController extends Controller{
       $request->validate([
           'archive_image' => ['required'],
       ]);
+
+      return back()->with("failed", "Sorry, this feature has not been implemented");
     }
 
     return redirect()->route('user', ['username' => Auth::user()->name])->with("success", "Archive success, Alhamdulillah");

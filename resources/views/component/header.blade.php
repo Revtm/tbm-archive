@@ -7,7 +7,7 @@
       <i onclick="sidebarClose()" class="fa fa-times float-right p-1 text-red-500" id="navbar-close" aria-hidden="true" style="display:none"></i>
     </center>
   </div>
-  <div class="container-fluid shadow-md fixed float-right bg-white" id="tbm-sidebar" style="display:none; height:50%">
+  <div class="container-fluid fixed shadow-md bg-white right-0 left-0" id="tbm-sidebar" style="display:none; height:50%">
     <div class="tbm-sidebar">
       <div class="grid grid-rows-2">
         <div class="">
