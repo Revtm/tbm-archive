@@ -7,6 +7,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script">
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
   </head>
   <body class="bg-slate-50">
@@ -15,6 +16,7 @@
       <div class="login-box shadow-md rounded-md bg-white">
         <center>
           <div class="container p-3">
+            <span class="text-gray-500 text-lg font-bold" style="font-family: 'Dancing Script';">Bismillah</span>
             <form action="/user/login/auth" method="post">
               @csrf
               @method('POST')

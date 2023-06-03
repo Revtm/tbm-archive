@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header-tbm shadow-md bg-white bg-contain fixed top-0 left-0 right-0">
     <center>
-      <a href="/"><i class="fa fa-home float-left p-1 text-red-500" aria-hidden="true"></i></a>
+      <a href="/home"><i class="fa fa-home float-left p-1 text-red-500" aria-hidden="true"></i></a>
       <span class="text-red-500 font-bold" style="font-family: 'Lobster';">TBM Archives</span>
       <i onclick="sidebarOpen()" class="fa fa-bars float-right p-1 text-red-500" id="navbar-open" aria-hidden="true"></i>
       <i onclick="sidebarClose()" class="fa fa-times float-right p-1 text-red-500" id="navbar-close" aria-hidden="true" style="display:none"></i>

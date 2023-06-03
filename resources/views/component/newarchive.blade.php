@@ -1,4 +1,6 @@
-<form id="new-archive-form" style="display: none" action="" method="post" enctype="multipart/form-data">
+<form id="new-archive-form" style="display: none" action="/user/archive" method="post" enctype="multipart/form-data">
+  @csrf
+  @method('POST')
   <div class="grid grid-rows-3 gap-2 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
     <div class="grid grid-rows-2">
       <div class="">
@@ -6,10 +8,10 @@
       </div>
       <div class="grid grid-cols-2">
         <div class="">
-          <input type="radio" name="archive-type" class="accent-red-500" onclick="onTypeYoutube()" checked> Youtube Video</input>
+          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeYoutube()" value="1" checked> Youtube Video</input>
         </div>
         <div class="">
-          <input type="radio" name="archive-type" class="accent-red-500" onclick="onTypeImage()"> Image</input>
+          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeImage()" value="2"> Image</input>
         </div>
       </div>
     </div>
@@ -20,8 +22,8 @@
       </div>
       <div class="grid grid-cols-1">
         <div class="">
-          <input type="text" id="archive-yt-url" name="archive-yt-url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss">
-          <input type="file" id="archive-image" name="archive-image" style="width:100%; display:none;" class="file-input accent-red-500 border rounded">
+          <input type="text" id="archive-yt-url" name="archive_yt_url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss">
+          <input type="file" id="archive-image" name="archive_image" style="width:100%; display:none;" class="file-input accent-red-500 border rounded">
         </div>
       </div>
     </div>
@@ -31,7 +33,7 @@
       </div>
       <div class="grid grid-cols-1">
         <div class="">
-          <input type="text" name="post-source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account">
+          <input type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account">
         </div>
       </div>
     </div>
@@ -43,7 +45,7 @@
         Caption:
       </div>
       <div class="">
-        <textarea name="post-caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah..."></textarea>
+        <textarea name="archive_caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah..."></textarea>
       </div>
     </div>
     <div class="grid grid-rows-1">

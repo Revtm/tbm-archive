@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArchiveController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +16,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [HomeController::class ,'index'])->name('home');
-Route::get('/user/login', [LoginController::class ,'index'])->name('login');
-Route::post('/user/login/auth', [LoginController::class ,'authenticate'])->name('login');
+Route::get('/home', [HomeController::class ,'index'])->name('home')->middleware('auth');
+Route::get('/', [LoginController::class ,'index'])->name('login');
+Route::post('/user/login/auth', [LoginController::class ,'authenticate']);
 
 Route::get('/user/profile/{username}', [UserController::class ,'index'])->name('user')->middleware('auth');
+Route::post('/user/archive', [ArchiveController::class ,'archivePost'])->middleware('auth');
