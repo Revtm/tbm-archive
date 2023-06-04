@@ -20,6 +20,6 @@ class UserController extends Controller
         'ownArchivesCount' => $archivesCount,
       ]);
     }
-    return view('home.home', ['user' => $user]);
+    return redirect()->route('home')->with('failed', $username.'\'s profile is Private');
   }
 }

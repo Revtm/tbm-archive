@@ -76,7 +76,7 @@
       <div class="shadow-md rounded-md content-tbm bg-white">
         <div class="post-owner">
           <div class="owner-username px-2">
-            <span class="align-baseline text-md font-serif text-red-500"><span class="text-gray-500">By</span> {{ '@' . $user->name }}</span>
+            <span class="align-baseline text-sm font-serif text-red-500"><span class="text-gray-500">By</span> {{ '@' . $user->name }}</span>
           </div>
         </div>
         <div class="post-content p-1">
@@ -86,12 +86,12 @@
         </div>
         <div class="post-caption p-1">
           <div class="action-button">
-            <button class="rounded-md bg-red-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1">Liked</button>
-            <button class="rounded-md bg-blue-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1" onclick="copySource({{ "\"" .$archive->source. "\""}})" >Source</button>
+            <button class="rounded-md bg-red-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1"><i class="fa fa-heart" aria-hidden="true"></i> MasyaAllah</button>
+            <button class="rounded-md bg-blue-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1" onclick="copySource({{ "\"" .$archive->source. "\""}})" ><i class="fa fa-file" aria-hidden="true"></i> Source</button>
           </div>
           <div class="caption p-1">
-            <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> likes</p>
-            <p class="text-sm font-serif text-justify text-gray-500" style="margin-bottom:0">
+            <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> reactions</p>
+            <p class="text-sm font-serif text-justify text-gray-500" style="margin-bottom:2px">
               {{$archive->captions}}
             </p>
             <p class="text-xs font-serif text-gray-500 text-right post-date" style="margin-bottom:0">{{date("d M Y, H:i", strtotime($archive->created_at))}}</p>
