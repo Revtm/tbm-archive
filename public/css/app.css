@@ -524,18 +524,6 @@ video {
 .top-0 {
   top: 0px;
 }
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
-.col-start-1 {
-  grid-column-start: 1;
-}
-.col-start-2 {
-  grid-column-start: 2;
-}
-.col-start-3 {
-  grid-column-start: 3;
-}
 .float-right {
   float: right;
 }
@@ -553,6 +541,10 @@ video {
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
+}
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 .my-2 {
   margin-top: 0.5rem;
@@ -634,9 +626,6 @@ video {
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
-.grid-cols-9 {
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-}
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
@@ -649,14 +638,8 @@ video {
 .items-center {
   align-items: center;
 }
-.justify-start {
-  justify-content: flex-start;
-}
 .justify-center {
   justify-content: center;
-}
-.gap-1 {
-  gap: 0.25rem;
 }
 .gap-2 {
   gap: 0.5rem;
@@ -664,17 +647,11 @@ video {
 .gap-y-0 {
   row-gap: 0px;
 }
-.place-self-center {
-  place-self: center;
-}
 .overflow-hidden {
   overflow: hidden;
 }
 .rounded {
   border-radius: 0.25rem;
-}
-.rounded-full {
-  border-radius: 9999px;
 }
 .rounded-lg {
   border-radius: 0.5rem;
@@ -727,6 +704,10 @@ video {
 .p-6 {
   padding: 1.5rem;
 }
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -746,10 +727,6 @@ video {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-.px-2 {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -826,10 +803,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-.text-blue-500 {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
 .underline {
   text-decoration-line: underline;
 }
@@ -852,9 +825,6 @@ video {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.outline-black {
-  outline-color: #000;
 }
 .hover\:bg-slate-400:hover {
   --tw-bg-opacity: 1;

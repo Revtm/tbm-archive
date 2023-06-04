@@ -18,14 +18,14 @@
         <center>
           <div class="container p-3">
             <span class="text-gray-500 text-lg font-bold" style="font-family: 'Dancing Script';">Bismillah</span>
-            <form action="/user/login/auth" method="post">
+            <form action="/register" method="post">
               @csrf
               @method('POST')
+              <input type="text" name="username" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="username">
               <input type="email" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email">
               <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password">
-              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Login</button>
+              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Register</button>
             </form>
-            <a class="text-sm" href="{{url('register')}}">Click here to register!</a>
             @if(session()->has('failed'))
             <div class="alert alert-warning alert-dismissible fade show my-1" role="alert">
               {{ session('failed') }}
@@ -38,6 +38,7 @@
         </center>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

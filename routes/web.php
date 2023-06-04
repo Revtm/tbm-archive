@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\SignUpController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +19,8 @@ use App\Http\Controllers\ArchiveController;
 
 Route::get('/home', [HomeController::class ,'index'])->name('home')->middleware('auth');
 Route::get('/', [LoginController::class ,'index'])->name('login');
+Route::get('/register', [SignUpController::class ,'index'])->name('registerWeb');
+Route::post('/register', [SignUpController::class ,'signUpWeb']);
 Route::post('/user/login/auth', [LoginController::class ,'authenticate']);
 Route::post('/user/logout/auth' , [LoginController::class ,'logout']);
 
