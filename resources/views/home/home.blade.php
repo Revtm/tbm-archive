@@ -53,5 +53,11 @@
       </div>
     </div>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script>
+      function copySource(source){
+        navigator.clipboard.writeText(source);
+        alert("Source copied: " + source);
+      }
+    </script>
   </body>
 </html>

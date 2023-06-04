@@ -19,6 +19,7 @@ use App\Http\Controllers\ArchiveController;
 Route::get('/home', [HomeController::class ,'index'])->name('home')->middleware('auth');
 Route::get('/', [LoginController::class ,'index'])->name('login');
 Route::post('/user/login/auth', [LoginController::class ,'authenticate']);
+Route::post('/user/logout/auth' , [LoginController::class ,'logout']);
 
 Route::get('/user/profile/{username}', [UserController::class ,'index'])->name('user')->middleware('auth');
 Route::post('/user/archive', [ArchiveController::class ,'archivePost'])->middleware('auth');

@@ -22,7 +22,7 @@
       </div>
       <div class="grid grid-cols-1">
         <div class="">
-          <input type="text" id="archive-yt-url" name="archive_yt_url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss">
+          <input type="text" id="archive-yt-url" name="archive_yt_url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss" value="{{ old('archive_yt_url') }}">
           <input type="file" id="archive-image" name="archive_image" style="width:100%; display:none;" class="file-input accent-red-500 border rounded">
         </div>
       </div>
@@ -33,7 +33,7 @@
       </div>
       <div class="grid grid-cols-1">
         <div class="">
-          <input type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account">
+          <input type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account" value="{{ old('archive_source') }}">
         </div>
       </div>
     </div>
@@ -45,7 +45,7 @@
         Caption:
       </div>
       <div class="">
-        <textarea name="archive_caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah..."></textarea>
+        <textarea name="archive_caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah...">{{ old('archive_caption')}}</textarea>
       </div>
     </div>
     <div class="grid grid-rows-1">

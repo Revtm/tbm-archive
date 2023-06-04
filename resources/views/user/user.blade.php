@@ -11,14 +11,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body class="bg-slate-50">
-    @if(session()->has('success'))
-
-    @endif
-
-    @if(session()->has('failed'))
-
-    @endif
-
     @include('component/header')
     <div class="container mx-auto main-container">
       <div class="grid grid-rows-1 grid-cols-3 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
@@ -52,6 +44,34 @@
       </div>
 
       @include('component/newarchive')
+
+      @if(session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade show mx-2" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+
+      @if(session()->has('info'))
+      <div class="alert alert-primary alert-dismissible fade show mx-2" role="alert">
+        {{ session('info') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+
+      @if(session()->has('failed'))
+      <div class="alert alert-warning alert-dismissible fade show mx-2" role="alert">
+        {{ session('failed') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
+
       @foreach ($ownArchives as $archive)
       <div class="shadow-md rounded-md content-tbm bg-white">
         <div class="post-owner grid grid-cols-9 gap-1 justify-start">
@@ -94,8 +114,8 @@
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     <script>
       function copySource(source){
