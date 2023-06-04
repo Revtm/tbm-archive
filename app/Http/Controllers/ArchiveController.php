@@ -65,6 +65,11 @@ class ArchiveController extends Controller{
         }
       }
 
+      $explodedYoutubeVideoId = explode("&", $youtubeVideoId);
+      if(count($explodedYoutubeVideoId) > 1){
+        $youtubeVideoId = $explodedYoutubeVideoId[0];
+      }
+
       $savedUserArchive = UserArchive::create([
         'user_id' => Auth::id(),
         'archive_type'=> $request->archive_type,

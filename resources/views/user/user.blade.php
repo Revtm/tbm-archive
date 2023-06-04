@@ -74,17 +74,12 @@
 
       @foreach ($ownArchives as $archive)
       <div class="shadow-md rounded-md content-tbm bg-white">
-        <div class="post-owner grid grid-cols-9 gap-1 justify-start">
-          <div class="owner-photo col-start-1 col-span-2 place-self-center">
-            <div class="photo">
-              <img class="photo-img rounded-full border outline-black" src="https://icon-library.com/images/no-profile-pic-icon/no-profile-pic-icon-12.jpg" alt="profile">
-            </div>
-          </div>
-          <div class="owner-username col-start-3 place-self-center">
-            <span class="align-baseline text-sm font-serif	text-gray-600">{{ '@' . $user->name }}</span>
+        <div class="post-owner">
+          <div class="owner-username px-2">
+            <span class="align-baseline text-md font-serif text-red-500"><span class="text-gray-500">By</span> {{ '@' . $user->name }}</span>
           </div>
         </div>
-        <div class="post-content">
+        <div class="post-content p-1">
           @if ($archive->archive_type === 1)
             <iframe width="100%" height="300" src="https://www.youtube.com/embed/{{$archive->archive_origin}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           @endif
