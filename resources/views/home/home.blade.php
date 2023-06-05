@@ -12,7 +12,7 @@
   </head>
   <body class="bg-slate-50">
     @include('component/header')
-    <div class="container mx-auto main-container">
+    <div class="container mx-auto main-container mt-14">
       @if(session()->has('failed'))
       <div class="alert alert-warning alert-dismissible fade show mx-2" role="alert">
         {{ session('failed') }}
@@ -23,7 +23,7 @@
       @endif
 
       @foreach ($archives as $archive)
-      <div class="shadow-md rounded-md content-tbm bg-white">
+      <div class="shadow-md rounded-md content-tbm bg-white mt-4">
         <div class="post-owner">
           <div class="owner-username px-2">
             <span class="align-baseline text-sm font-serif text-red-500"><span class="text-gray-500">By</span> {{ '@' . $archive->user->name }}</span>
@@ -41,7 +41,7 @@
           </div>
           <div class="caption p-1">
             <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> reactions</p>
-            <p class="text-sm font-serif text-justify text-gray-500" style="margin-bottom:2px">
+            <p class="text-sm font-serif text-left text-gray-500" style="margin-bottom:2px">
               {{$archive->captions}}
             </p>
             <p class="text-xs font-serif text-gray-500 text-right post-date" style="margin-bottom:0">{{date("d M Y, H:i", strtotime($archive->created_at))}}</p>

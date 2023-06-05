@@ -12,8 +12,8 @@
   </head>
   <body class="bg-slate-50">
     @include('component/header')
-    <div class="container mx-auto main-container">
-      <div class="grid grid-rows-1 grid-cols-3 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
+    <div class="container mx-auto main-container mt-14">
+      <div class="grid grid-rows-1 grid-cols-3 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
         <div class="grid grid-rows-2">
           <div class="">
             <center><i class="fa fa-user-circle-o p-1 text-red-500" aria-hidden="true"></i></center>
@@ -91,7 +91,7 @@
           </div>
           <div class="caption p-1">
             <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> reactions</p>
-            <p class="text-sm font-serif text-justify text-gray-500" style="margin-bottom:2px">
+            <p class="text-sm font-serif text-left text-gray-500" style="margin-bottom:2px">
               {{$archive->captions}}
             </p>
             <p class="text-xs font-serif text-gray-500 text-right post-date" style="margin-bottom:0">{{date("d M Y, H:i", strtotime($archive->created_at))}}</p>

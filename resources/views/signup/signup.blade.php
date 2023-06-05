@@ -14,7 +14,7 @@
   <body class="bg-slate-50">
     @include('component/header')
     <div class="container mx-auto login-container">
-      <div class="login-box shadow-md rounded-md bg-white">
+      <div class="login-box shadow-md rounded-md bg-white mt-20 lg:mt-16">
         <center>
           <div class="container p-3">
             <span class="text-gray-500 text-lg font-bold" style="font-family: 'Dancing Script';">Bismillah</span>
@@ -26,6 +26,7 @@
               <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password">
               <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Register</button>
             </form>
+            <a class="text-sm" href="{{url('/')}}">Click here to Login!</a>
             @if(session()->has('failed'))
             <div class="alert alert-warning alert-dismissible fade show my-1" role="alert">
               {{ session('failed') }}
