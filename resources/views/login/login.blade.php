@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
-  <body class="bg-slate-100">
+  <body class="bg-slate-200">
     @include('component/header')
     <div class="container mx-auto login-container">
       <div class="login-box shadow-md rounded-md bg-white mt-20 lg:mt-16">
