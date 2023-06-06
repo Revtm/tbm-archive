@@ -6,7 +6,11 @@ module.exports = {
   "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        'ping-slow': 'ping 5s linear infinite',
+      }
+    },
   },
   plugins: [],
 }

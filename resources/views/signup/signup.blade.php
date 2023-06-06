@@ -6,6 +6,7 @@
     <title>Login</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/login/style.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('icon/favicon.ico') }}" size="48x48" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script">
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">
