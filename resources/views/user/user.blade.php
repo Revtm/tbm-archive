@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster">
     <title>{{ '@' . $user->name }}</title>
     <link href="{{ asset('css/app.css') }}?t={{time()}}" rel="stylesheet">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
     <link rel="icon" href="{{ asset('icon/favicon.ico') }}" size="48x48" type="image/png">
     <link href="{{ asset('css/user/style.css') }}?t={{time()}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.min.css') }}">

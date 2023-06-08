@@ -6,6 +6,7 @@
     <title>Login</title>
     <link href="{{ asset('css/app.css') }}?t={{time()}}" rel="stylesheet">
     <link href="{{ asset('css/login/style.css') }}?t={{time()}}" rel="stylesheet">
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
     <link rel="icon" href="{{ asset('icon/favicon.ico') }}" size="48x48" type="image/png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script">

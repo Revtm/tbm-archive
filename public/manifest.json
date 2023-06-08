@@ -1,0 +1,21 @@
+{
+  "name": "TBM Archives",
+  "short_name": "TBM Archives",
+  "description": "TBM Web App",
+  "icons": [
+    {
+      "src": "icons/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icons/favicon.jpg",
+      "sizes": "48x48",
+      "type": "image/jpg"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color":"#dc3545",
+  "background_color":"#dc3545"
+}
