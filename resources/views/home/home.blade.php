@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body class="bg-slate-100">
-    @include('component/header')
+    @include('component/headerhome')
     <div class="container mx-auto main-container mt-14">
       @if(session()->has('failed'))
       <div class="alert alert-warning alert-dismissible fade show mx-2" role="alert">
