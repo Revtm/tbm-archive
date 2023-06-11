@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="header-tbm shadow-md bg-white bg-contain fixed top-0 left-0 right-0 p-3 md:p-5">
+  <div class="header-tbm shadow-md bg-white bg-contain fixed top-0 left-0 right-0 p-3 md:p-5 z-10">
     <center>
       @if(isset($user))
       <a href="{{ url('home') }}"><i class="fa fa-home float-left p-1 text-red-500" aria-hidden="true"></i></a>
@@ -12,12 +12,12 @@
     </center>
   </div>
   @if(isset($user))
-  <div class="container-fluid fixed shadow-md bg-white right-0 left-0 m-0" id="tbm-sidebar" style="display:none; height:50%">
+  <div class="container-fluid fixed shadow-md bg-white right-0 left-0 m-0 z-10" id="tbm-sidebar" style="display:none; height:50%">
     <div class="tbm-sidebar">
       <div class="grid grid-rows-2">
         <div class="">
           <center>
-            <a href="{{url('user/profile/' . $user->name)}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button">Profile</a>
+            <a href="{{url('user/' . $user->name)}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button">Profile</a>
           </center>
         </div>
         <div class="">

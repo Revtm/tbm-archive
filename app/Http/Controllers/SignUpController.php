@@ -15,13 +15,13 @@ class SignUpController extends Controller
 
     public function signUpWeb(Request $request){
       $validation = Validator::make($request->all(),[
-          'username' => 'required',
-          'email' => 'required',
+          'username' => 'required|max:12|min:5',
+          'email' => 'required|email:rfc,dns,spoof',
           'password' => 'required',
       ]);
 
       if($validation->fails()){
-        return back()->with('failed', 'Please fill the empty form');
+        return back()->with('failed', $validation->errors());
       }
 
       $savedUser = User::create([

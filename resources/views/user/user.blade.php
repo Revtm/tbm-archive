@@ -79,6 +79,14 @@
         <div class="post-owner">
           <div class="owner-username px-2">
             <span class="align-baseline text-sm font-serif text-red-500"><span class="text-gray-500">By</span> {{ '@' . $user->name }}</span>
+            <div class="dropdown float-right">
+              <a href="#" role="button" id="dropdownUserArchive-{{ $archive->id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-ellipsis-h text-gray-500 p-2" aria-hidden="true"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownUserArchive-{{ $archive->id }}">
+                <a class="dropdown-item" href="/user/{{$user->name}}/archive/edit/{{$archive->id}}">Edit</a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="post-content p-1">
@@ -88,11 +96,11 @@
         </div>
         <div class="post-caption p-1">
           <div class="action-button">
-            <button class="rounded-md bg-red-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1"><i class="fa fa-heart" aria-hidden="true"></i> MasyaAllah</button>
+            <button class="rounded-md bg-red-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1" onclick="clickReaction({{$archive->id}})"><i class="fa fa-heart" aria-hidden="true"></i> MasyaAllah</button>
             <button class="rounded-md bg-blue-500 hover:bg-slate-400 text-xs text-white p-1 px-3 mx-1" onclick="copySource({{ "\"" .$archive->source. "\""}})" ><i class="fa fa-file" aria-hidden="true"></i> Source</button>
           </div>
           <div class="caption p-1">
-            <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span>{{$archive->likes}}</span> reactions</p>
+            <p class="text-xs font-serif text-gray-400 likes-count" style="margin-bottom:0"><span id="reaction-{{$archive->id}}">{{$archive->likes}}</span> reactions</p>
             <p class="text-sm font-serif text-left text-gray-500" style="margin-bottom:2px">
               {{$archive->captions}}
             </p>
@@ -118,6 +126,14 @@
       function copySource(source){
         navigator.clipboard.writeText(source);
         alert("Source copied: " + source);
+      }
+
+      function clickReaction(archiveId){
+        const reaction = document.getElementById("reaction-"+archiveId);
+        reaction.innerHTML = parseInt(reaction.innerHTML) + 1;
+        fetch('/api/usr/reaction/'+archiveId, { method: 'POST' })
+          .then(result => result.json())
+          .then(jsonResult => {console.log(jsonResult)});
       }
     </script>
   </body>

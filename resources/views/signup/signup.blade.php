@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Register</title>
     <link href="{{ asset('css/app.css') }}?t={{time()}}" rel="stylesheet">
     <link href="{{ asset('css/login/style.css') }}?t={{time()}}" rel="stylesheet">
     <link rel="manifest" href="{{ asset('manifest.json') }}">
@@ -31,7 +31,11 @@
             <a class="text-sm" href="{{url('/')}}">Click here to Login!</a>
             @if(session()->has('failed'))
             <div class="alert alert-warning alert-dismissible fade show my-1" role="alert">
-              {{ session('failed') }}
+              <ul>
+                @foreach(session('failed')->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
