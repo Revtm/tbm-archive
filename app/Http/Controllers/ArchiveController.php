@@ -109,6 +109,11 @@ class ArchiveController extends Controller{
         $youtubeVideoId = $explodedYoutubeVideoId[0];
       }
 
+      $explodedYoutubeVideoId = explode("?", $youtubeVideoId);
+      if(count($explodedYoutubeVideoId) > 1){
+        $youtubeVideoId = $explodedYoutubeVideoId[0];
+      }
+
       $updatedUserArchive = UserArchive::where('id', $archiveId)
       ->where('user_id', Auth::id())
       ->update([
@@ -173,6 +178,11 @@ class ArchiveController extends Controller{
       }
 
       $explodedYoutubeVideoId = explode("&", $youtubeVideoId);
+      if(count($explodedYoutubeVideoId) > 1){
+        $youtubeVideoId = $explodedYoutubeVideoId[0];
+      }
+
+      $explodedYoutubeVideoId = explode("?", $youtubeVideoId);
       if(count($explodedYoutubeVideoId) > 1){
         $youtubeVideoId = $explodedYoutubeVideoId[0];
       }
