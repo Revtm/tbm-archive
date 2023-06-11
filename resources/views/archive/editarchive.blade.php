@@ -18,11 +18,11 @@
       <form id="new-archive-form" action="/user/archive/edit/t/{{$archive->archive_type}}/i/{{$archive->id}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('POST')
-        <div class="grid grid-rows-2 gap-2 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
+        <div class="grid {{$archive->archive_type === 1 ? 'grid-rows-2' : 'grid-rows-1'}} gap-2 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
           <div class="grid grid-rows-2">
+            @if ($archive->archive_type === 1)
             <div class="">
               <span id="archive-yt-url-label">Youtube Url:</span>
-              <span id="archive-image-label" style="display:none">Image File:</span>
             </div>
             <div class="grid grid-cols-1">
               <div class="">
@@ -30,6 +30,7 @@
                 <input type="file" id="archive-image" name="archive_image" style="width:100%; display:none;" class="file-input accent-red-500 border rounded">
               </div>
             </div>
+            @endif
           </div>
           <div class="grid grid-rows-2">
             <div class="">

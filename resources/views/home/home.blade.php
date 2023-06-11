@@ -34,7 +34,9 @@
         <div class="post-content p-1">
           @if ($archive->archive_type === 1)
             <iframe width="100%" height="300" src="https://www.youtube.com/embed/{{$archive->archive_origin}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          @endif
+            @elseif($archive->archive_type === 2)
+              <center><img src="{{ Storage::url('archiveimage/').$archive->archive_origin }}" alt="not found" width="275px"></center>
+            @endif
         </div>
         <div class="post-caption p-1">
           <div class="action-button">

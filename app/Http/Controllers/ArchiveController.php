@@ -5,6 +5,7 @@ use App\Models\UserArchive;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Http\Request;
 
@@ -43,12 +44,23 @@ class ArchiveController extends Controller{
   }
 
   public function deleteArchive(Request $request, $archiveType, $archiveId){
+    $findArchive = UserArchive::where('id', $archiveId)
+    ->where('user_id', Auth::id())->firstOr(function () {
+      return back()->with("failed", "Cannot find your archive, maybe the specified archive was deleted");
+    });
+
+    $archiveOrigin = $findArchive->archive_origin;
+
     $deletedArchive = UserArchive::where('id', $archiveId)
     ->where('user_id', Auth::id())
     ->delete();
 
     if(!$deletedArchive){
       return back()->withInput()->with("failed", "Failed to delete your archive, please try again in another time.");
+    }
+
+    if($archiveType == 2){
+      Storage::disk('local')->delete('public/archiveimage/' . $findArchive->archive_origin);
     }
 
     return redirect()->route('user', ['username' => Auth::user()->name])
@@ -106,11 +118,12 @@ class ArchiveController extends Controller{
       ]);
 
     }else if($archiveType == 2){ //img
-      $secondValidation = Validator::make($request->all(),[
-          'archive_image' => ['required'],
+      $updatedUserArchive = UserArchive::where('id', $archiveId)
+      ->where('user_id', Auth::id())
+      ->update([
+        'source'=> $request->archive_source,
+        'captions'=> $request->archive_caption,
       ]);
-
-      return back()->with("info", "Sorry, this feature has not been implemented yet");
     }
 
     if(!$updatedUserArchive){
@@ -175,10 +188,24 @@ class ArchiveController extends Controller{
 
     }else if($request->archive_type == 2){ //img
       $secondValidation = Validator::make($request->all(),[
-          'archive_image' => ['required'],
+          'archive_image' => 'required|image|mimes:png,jpg,jpeg|max:800',
       ]);
 
-      return back()->with("info", "Sorry, this feature has not been implemented yet");
+      if($secondValidation->fails()){
+        return back()->withInput()->with("failed", "Failed to archive, please input valid image");
+      }
+
+      $archiveImage = $request->file('archive_image');
+      $archiveImage->storeAs('public/archiveimage', $archiveImage->hashName());
+
+      $savedUserArchive = UserArchive::create([
+        'user_id' => Auth::id(),
+        'archive_type'=> $request->archive_type,
+        'source'=> $request->archive_source,
+        'archive_origin' => $archiveImage->hashName(),
+        'captions'=> $request->archive_caption,
+        'likes' => 0,
+      ]);
     }
 
     return redirect()->route('user', ['username' => Auth::user()->name])->with("success", "Successfully archived, Alhamdulillah");

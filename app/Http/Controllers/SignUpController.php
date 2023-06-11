@@ -15,7 +15,7 @@ class SignUpController extends Controller
 
     public function signUpWeb(Request $request){
       $validation = Validator::make($request->all(),[
-          'username' => 'required|max:12|min:5',
+          'username' => 'required|max:15|min:5',
           'email' => 'required|email:rfc,dns,spoof',
           'password' => 'required',
       ]);
@@ -25,7 +25,7 @@ class SignUpController extends Controller
       }
 
       $savedUser = User::create([
-        'name' => $request->username,
+        'name' => preg_replace('/\s+/', '_', $request->username),
         'email' => $request->email,
         'password' => Hash::make($request->password),
       ]);
