@@ -26,7 +26,7 @@
             </div>
             <div class="grid grid-cols-1">
               <div class="">
-                <input type="text" id="archive-yt-url" name="archive_yt_url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss" value="{{ $archive->source }}">
+                <input autocomplete="off" type="text" id="archive-yt-url" name="archive_yt_url" style="width:100%" class="yt-url-input accent-red-500 border rounded p-1" placeholder="https://www.youtube.com/watch?v=KbkyqccX8ss" value="{{ $archive->source }}">
                 <input type="file" id="archive-image" name="archive_image" style="width:100%; display:none;" class="file-input accent-red-500 border rounded">
               </div>
             </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="grid grid-cols-1">
               <div class="">
-                <input type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account" value="{{ $archive->source }}">
+                <input autocomplete="off" type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account" value="{{ $archive->source }}">
               </div>
             </div>
           </div>
