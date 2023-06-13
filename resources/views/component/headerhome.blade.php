@@ -14,10 +14,15 @@
   @if(isset($user))
   <div class="container-fluid fixed shadow-md bg-white right-0 left-0 m-0 z-10" id="tbm-sidebar" style="display:none; height:50%">
     <div class="tbm-sidebar">
-      <div class="grid grid-rows-2">
+      <div class="grid grid-rows-3">
         <div class="">
           <center>
             <a href="{{url('user/' . $user->name)}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button">Profile</a>
+          </center>
+        </div>
+        <div class="">
+          <center>
+            <button class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button" data-toggle="modal" data-target="#new-feature-modal-sm">Amal Yaumi <span style="font-size:6pt; padding:1px" class="bg-blue-500 text-white rounded-full">coming soon!</span></button>
           </center>
         </div>
         <div class="">
@@ -34,7 +39,21 @@
   </div>
   @endif
 </div>
-
+<div class="modal fade" id="new-feature-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Developer Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>InsyaAllah</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 function sidebarOpen() {
