@@ -18,6 +18,9 @@ class SignUpController extends Controller
           'username' => 'required|max:15|min:5',
           'email' => 'required|email:rfc,dns,spoof',
           'password' => 'required',
+          'validation-word' => 'required|captcha'
+      ], $messages = [
+        'captcha' => 'The entered validation text is incorrect.'
       ]);
 
       if($validation->fails()){
@@ -30,7 +33,7 @@ class SignUpController extends Controller
         'password' => Hash::make($request->password),
       ]);
 
-      return redirect()->route('login')->with('success', 'Your account has been successfully registered');
+      return redirect()->route('login')->with('success', 'Your account has been successfully registered, please login.');
     }
 
     public function signUp(Request $request){
@@ -52,5 +55,9 @@ class SignUpController extends Controller
       }
 
       return response()->json(['error' => 'Unauthenticated.'], 401);
+    }
+
+    public function reloadCapt(){
+        return response()->json(['capt'=> captcha_img()]);
     }
 }
