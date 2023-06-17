@@ -28,8 +28,8 @@
             <form action="/register" method="post">
               @csrf
               @method('POST')
-              <input type="text" autocomplete="off" name="username" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="username" required>
-              <input type="email" autocomplete="off" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email" required>
+              <input type="text" autocomplete="off" name="username" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="username" value="{{ old('username') }}" required>
+              <input type="email" autocomplete="off" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email" value="{{ old('email') }}" required>
               <input type="password" name="password" autocomplete="off" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password" required>
               <span id="capt-image">
                 {!! captcha_img() !!}

@@ -15,8 +15,8 @@ class SignUpController extends Controller
 
     public function signUpWeb(Request $request){
       $validation = Validator::make($request->all(),[
-          'username' => 'required|max:15|min:5',
-          'email' => 'required|email:rfc,dns,spoof',
+          'username' => 'required|max:15|min:5|unique:App\Models\User,name',
+          'email' => 'required|email:rfc,dns,spoof|unique:App\Models\User,email',
           'password' => 'required',
           'validation-word' => 'required|captcha'
       ], $messages = [
@@ -24,7 +24,7 @@ class SignUpController extends Controller
       ]);
 
       if($validation->fails()){
-        return back()->with('failed', $validation->errors());
+        return back()->withInput()->with('failed', $validation->errors());
       }
 
       $savedUser = User::create([

@@ -23,8 +23,8 @@
             <form action="/user/login/auth" method="post">
               @csrf
               @method('POST')
-              <input type="email" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email">
-              <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password">
+              <input type="email" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email" required>
+              <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password" required>
               <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Login</button>
             </form>
             <a class="text-sm" href="{{url('register')}}">Click here to register!</a>
