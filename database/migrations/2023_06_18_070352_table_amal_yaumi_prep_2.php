@@ -14,7 +14,7 @@ class TableAmalYaumiPrep2 extends Migration
     public function up()
     {
       Schema::table('user_archive', function (Blueprint $table){
-        $table->dropForeign('user_archive_user_id_foreign');
+        $table->dropForeign(['user_id']);
       });
 
       Schema::table('users', function (Blueprint $table) {
