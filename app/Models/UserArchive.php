@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Uuid;
 
 class UserArchive extends Model
 {
-    use HasFactory;
+    use Uuid, HasFactory;
+
+    public $incrementing = false;
+    protected $keyType = 'uuid';
     protected $table = 'user_archive';
     protected $primaryKey = 'id';
     protected $fillable = [
