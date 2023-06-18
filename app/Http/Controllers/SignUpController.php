@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\AmalYaumi;
 use Illuminate\Support\Facades\Validator;
 
 class SignUpController extends Controller
@@ -31,6 +32,10 @@ class SignUpController extends Controller
         'name' => preg_replace('/\s+/', '_', $request->username),
         'email' => $request->email,
         'password' => Hash::make($request->password),
+      ]);
+
+      $savedAmalYaumiMaster = AmalYaumi::create([
+        'user_id' => $savedUser->id(),
       ]);
 
       return redirect()->route('login')->with('success', 'Your account has been successfully registered, please login.');

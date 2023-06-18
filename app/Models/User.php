@@ -46,7 +46,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function userArchive(){
-        return $this->hasMany(UserArchive::class, 'user_id', 'id');
-    }
+    // public function userArchive(){
+    //     return $this->hasMany(UserArchive::class, 'user_id', 'id');
+    // }
 }
