@@ -40,7 +40,7 @@
         </div>
         <div class="post-caption p-1">
           <div class="action-button">
-            <button class="rounded-md bg-red-500 hover:bg-slate-400 active:bg-red-700 text-xs text-white p-1 px-3 mx-1" onclick="clickReaction({{$archive->id}})"><i class="fa fa-heart" aria-hidden="true"></i> MasyaAllah</button>
+            <button class="rounded-md bg-red-500 hover:bg-slate-400 active:bg-red-700 text-xs text-white p-1 px-3 mx-1" onclick="clickReaction('{{$archive->id}}')"><i class="fa fa-heart" aria-hidden="true"></i> MasyaAllah</button>
             <button class="rounded-md bg-blue-500 hover:bg-slate-400 active:bg-blue-700 text-xs text-white p-1 px-3 mx-1" onclick="copySource({{ "\"" .$archive->source. "\""}})" ><i class="fa fa-file" aria-hidden="true"></i> Source</button>
           </div>
           <div class="caption p-1">
@@ -75,8 +75,7 @@
         const reaction = document.getElementById("reaction-"+archiveId);
         reaction.innerHTML = parseInt(reaction.innerHTML) + 1;
         fetch('/api/usr/reaction/'+archiveId, {method: 'POST'})
-          .then(result => result.json())
-          .then(jsonResult => {console.log(jsonResult)});
+          .then(result => result.json());
       }
     </script>
   </body>
