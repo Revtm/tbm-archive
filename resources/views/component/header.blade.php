@@ -22,7 +22,7 @@
         </div>
         <div class="">
           <center>
-            <button class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button" data-toggle="modal" data-target="#new-feature-modal-sm">Amal Yaumi <span style="font-size:6pt; padding:1px" class="bg-blue-500 text-white rounded-full">coming soon!</span></button>
+            <a href="{{url('/amalyaumi')}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="amal-yaumi">Amal Yaumi <span style="font-size:6pt; padding:1px" class="bg-blue-500 text-white rounded-full">new!</span></a>
           </center>
         </div>
         <div class="">

@@ -10,6 +10,7 @@ use App\Models\AmalYaumiMapping;
 class AmalYaumiController extends Controller
 {
   public function index(){
+    $user = Auth::user();
     $doDateLast=date_create();
     date_sub($doDateLast, date_interval_create_from_date_string("7 days"));
 
@@ -19,12 +20,13 @@ class AmalYaumiController extends Controller
                       ->where('do_date', '>=', date_format($doDateLast,"Y-m-d"))
                       ->orderBy('do_date')
                       ->get();
-                      
+
     $amalYaumiRecent = AmalYaumiMapping::where('user_id', Auth::id())
                       ->where('do_date', '=', date("Y-m-d"))
                       ->get();
 
     return view('amalyaumi.amalyaumi', [
+      'user' => $user,
       'amalYaumiMaster' => $amalYaumiMaster[0],
       'amalYaumiReport' => AmalYaumiController::processReport($amalYaumiReport),
       'amalYaumiRecent' => $amalYaumiRecent,
@@ -88,5 +90,37 @@ class AmalYaumiController extends Controller
     ];
 
     return $reports;
+  }
+
+  public function saveAmalYaumi(Request $request){
+    $savedMapping = AmalYaumiMapping::where('user_id', Auth::id())
+                ->where('do_date', '=', date("Y-m-d"))
+                ->update([
+                    'subuh' => AmalYaumiController::convertAmalStatus($request->subuh),
+                    'dzuhur' => AmalYaumiController::convertAmalStatus($request->dzuhur),
+                    'ashar' => AmalYaumiController::convertAmalStatus($request->ashar),
+                    'maghrib' => AmalYaumiController::convertAmalStatus($request->maghrib),
+                    'isya' => AmalYaumiController::convertAmalStatus($request->isya),
+                    'dhuha' => AmalYaumiController::convertAmalStatus($request->dhuha),
+                    'witir' => AmalYaumiController::convertAmalStatus($request->witir),
+                    'read_quran' => AmalYaumiController::convertAmalStatus($request->read_quran),
+                    'shodaqoh' => AmalYaumiController::convertAmalStatus($request->shodaqoh),
+                    'syukur' => AmalYaumiController::convertAmalStatus($request->syukur),
+                    'doa_for_parent' => AmalYaumiController::convertAmalStatus($request->doa_for_parent),
+                    'doa_for_friend' => AmalYaumiController::convertAmalStatus($request->doa_for_friend),
+                ]);
+
+    return redirect()->route('amalYaumi')
+          ->with("success", "Your amal yaumi was updated successfully, Alhamdulillah");
+  }
+
+  private function convertAmalStatus($status){
+    if(!$status){
+      return '0';
+    }else if($status === "on"){
+      return '1';
+    }else{
+      return '0';
+    }
   }
 }

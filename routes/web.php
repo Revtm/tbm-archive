@@ -29,6 +29,7 @@ Route::get('/user/{username}', [UserController::class ,'index'])->name('user')->
 Route::get('/user/{username}/archive/edit/{archiveId}', [UserController::class ,'editArchive'])->middleware('auth');
 
 Route::get('/amalyaumi', [AmalYaumiController::class ,'index'])->name('amalYaumi')->middleware('auth');
+Route::post('/amalyaumi', [AmalYaumiController::class ,'saveAmalYaumi'])->middleware('auth');
 
 Route::post('/user/archive', [ArchiveController::class ,'archivePost'])->middleware('auth');
 Route::post('/user/archive/edit/t/{archiveType}/i/{archiveId}', [ArchiveController::class ,'editArchive'])->middleware('auth');

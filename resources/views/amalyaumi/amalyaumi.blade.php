@@ -15,137 +15,165 @@
   </head>
   <body class="bg-slate-100">
     @include('component/header')
-    <div class="container mx-auto main-container mt-14">
-      <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
-        <div class="grid grid-rows-1">
-          <div class="grid grid-cols-2">
-            <div class="text-gray-500">Date</div><div class="text-gray-500">: {{date("d M Y")}}</div>
-          </div>
-          <div class="grid grid-cols-2">
-            <div class="text-gray-500">Amal Yaumi Status </div><div>: {!!$amalYaumiMaster->status == 1 ? '<span class="text-green-500">Active</span>' : '<span class="text-yellow-500">Non Active</span>'!!}</div>
-          </div>
-          <div class="grid my-1">
-            <span class="text-gray-500">Don't forget to say <span style="font-family: 'Lobster';">Bismillah</span> :)</span>
+    <form class="amal-yaumi-form" action="/amalyaumi" method="post">
+      @csrf
+      @method('POST')
+      <div class="container mx-auto main-container mt-14">
+        <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
+          <div class="grid grid-rows-1">
+            <div class="grid grid-cols-2">
+              <div class="text-gray-500">Date</div><div class="text-gray-500">: {{date("d M Y")}}</div>
+            </div>
+            <div class="grid grid-cols-2">
+              <div class="text-gray-500">Amal Yaumi Status </div><div>: {!!$amalYaumiMaster->status == 1 ? '<span class="text-green-500">Active</span>' : '<span class="text-yellow-500">Non Active</span>'!!}</div>
+            </div>
+            <div class="grid my-1">
+              @if($amalYaumiMaster->status == 1)
+                <span class="text-gray-500">Don't forget to say <span style="font-family: 'Lobster';">Bismillah</span> :)</span>
+              @else
+                <span class="text-gray-500">If you are interested to join this Amal Yaumi program, please click <a href="{{url('/setting')}}">here</a> :D</span>
+              @endif
+            </div>
           </div>
         </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
-        <div class="grid grid-rows-1 overflow-x-auto">
-          <div class="">
+        <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
+          <div class="grid grid-rows-1 overflow-x-auto">
             <div class="">
-              <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Last 7 Days Report
-              <span id="open-text-report" class="text-red-500" onclick="onOpenReportTab()">(click to open)</span>
-              <span id="close-text-report" class="text-red-500" onclick="onCloseReportTab()" style="display:none">(click to close)</span>
-            </div>
-            <div class="" id="amal-chart" style="display:none">
-              <canvas id="myChart" height="200px" width="300px"></canvas>
+              <div class="">
+                <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Last 7 Records
+                <span id="open-text-report" class="text-red-500" onclick="onOpenReportTab()">(click to open)</span>
+                <span id="close-text-report" class="text-red-500" onclick="onCloseReportTab()" style="display:none">(click to close)</span>
+              </div>
+              <div class="" id="amal-chart" style="display:none">
+                <canvas id="myChart" height="200px" width="300px"></canvas>
+              </div>
             </div>
           </div>
         </div>
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show mx-2" role="alert">
+          {{ session('success') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        @endif
+        @if(count($amalYaumiRecent) > 0)
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
+          <div class="m-1">
+            Shalat Subuh (Jama'ah)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="subuh" id="subuh">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Shalat Dzuhur (Jama'ah)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="dzuhur" id="dzuhur">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
+          <div class="m-1">
+            Shalat Ashar (Jama'ah)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="ashar" id="ashar">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
+          <div class="m-1">
+            Shalat Magrib (Jama'ah)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="maghrib" id="maghrib">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Shalat Isya (Jama'ah)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="isya" id="isya">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Shalat Sunnah Dhuha
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="dhuha" id="dhuha">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Shalat Sunnah Witir
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="witir" id="witir">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Tilawah Al-Qur'an (min: 1 ayat)
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="read_quran" id="read_quran">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Shodaqoh
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="shodaqoh" id="shodaqoh">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Syukur
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="syukur" id="syukur">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
+          <div class="m-1">
+            Do'a for your Parent
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="doa_for_parent" id="doa_for_parent">
+          </div>
+        </div>
+        <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
+          <div class="m-1">
+            Do'a for TBM
+          </div>
+          <div class="text-right">
+            <input class="accent-red-500 m-2" type="checkbox" name="doa_for_friend" id="doa_for_friend">
+          </div>
+        </div>
+        @else
+        <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
+          <div class="m-1">
+            @if($amalYaumiMaster->status == '1')
+              The system is still processing your form. Please reload this page after 5-10 minutes.
+            @else
+              Your amal yaumi status is non-active
+            @endif
+          </div>
+        </div>
+        @endif
       </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
-        <div class="m-1">
-          Shalat Subuh (Jama'ah)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="subuh" value="off">
+      <div class="container fixed shadow-md bg-white bg-contain bottom-0 left-0 right-0 p-2 md:p-4 z-10">
+        <div class="grid grid-rows-1">
+          <button type="submit" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Save</button>
         </div>
       </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Shalat Dzuhur (Jama'ah)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="dzuhur" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
-        <div class="m-1">
-          Shalat Ashar (Jama'ah)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="ashar" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
-        <div class="m-1">
-          Shalat Magrib (Jama'ah)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="maghrib" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Shalat Isya (Jama'ah)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="isya" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Shalat Sunnah Dhuha
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="dhuha" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Shalat Sunnah Witir
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="witir" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Tilawah Al-Qur'an (min: 1 ayat)
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="read_quran" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Shodaqoh
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="shodaqoh" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Syukur
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="syukur" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
-        <div class="m-1">
-          Do'a for your Parent
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="doa_for_parent" value="off">
-        </div>
-      </div>
-      <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
-        <div class="m-1">
-          Do'a for TBM
-        </div>
-        <div class="text-right">
-          <input class="accent-red-500 m-2" type="checkbox" name="doa_for_friend" value="off">
-        </div>
-      </div>
-    </div>
-    <div class="container fixed shadow-md bg-white bg-contain bottom-0 left-0 right-0 p-2 md:p-4 z-10">
-      <div class="grid grid-rows-1">
-        <button type="button" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Save</button>
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js?t={{time()}}" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -187,5 +215,23 @@
           document.getElementById("amal-chart").style.display = "none";
         }
     </script>
+    @if(count($amalYaumiRecent) > 0)
+    <script type="text/javascript">
+        $(document).ready(function () {
+          $("#subuh").prop("checked", {{$amalYaumiRecent[0]['subuh']}});
+          $("#dzuhur").prop("checked", {{$amalYaumiRecent[0]['dzuhur']}});
+          $("#ashar").prop("checked", {{$amalYaumiRecent[0]['ashar']}});
+          $("#maghrib").prop("checked", {{$amalYaumiRecent[0]['maghrib']}});
+          $("#isya").prop("checked", {{$amalYaumiRecent[0]['isya']}});
+          $("#dhuha").prop("checked", {{$amalYaumiRecent[0]['dhuha']}});
+          $("#witir").prop("checked", {{$amalYaumiRecent[0]['witir']}});
+          $("#read_quran").prop("checked", {{$amalYaumiRecent[0]['read_quran']}});
+          $("#shodaqoh").prop("checked", {{$amalYaumiRecent[0]['shodaqoh']}});
+          $("#syukur").prop("checked", {{$amalYaumiRecent[0]['syukur']}});
+          $("#doa_for_parent").prop("checked", {{$amalYaumiRecent[0]['doa_for_parent']}});
+          $("#doa_for_friend").prop("checked", {{$amalYaumiRecent[0]['doa_for_friend']}});
+        });
+    </script>
+    @endif
   </body>
 </html>
