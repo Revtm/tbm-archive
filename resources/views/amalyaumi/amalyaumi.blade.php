@@ -40,7 +40,7 @@
           <div class="grid grid-rows-1 overflow-x-auto">
             <div class="">
               <div class="">
-                <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Last 7 Records
+                <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Last 7 Days Report
                 <span id="open-text-report" class="text-red-500" onclick="onOpenReportTab()">(click to open)</span>
                 <span id="close-text-report" class="text-red-500" onclick="onCloseReportTab()" style="display:none">(click to close)</span>
               </div>
@@ -58,7 +58,7 @@
           </button>
         </div>
         @endif
-        @if(count($amalYaumiRecent) > 0)
+        @if($amalYaumiMaster->status == 1 && count($amalYaumiRecent) > 0)
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
           <div class="m-1">
             Shalat Subuh (Jama'ah)
@@ -158,7 +158,7 @@
         @else
         <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
           <div class="m-1">
-            @if($amalYaumiMaster->status == '1')
+            @if($amalYaumiMaster->status == 1)
               The system is still processing your form. Please reload this page after 5-10 minutes.
             @else
               Your amal yaumi status is non-active

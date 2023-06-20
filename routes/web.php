@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArchiveController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\AmalYaumiController;
+use App\Http\Controllers\SettingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,9 @@ Route::post('/user/logout/auth' , [LoginController::class ,'logout'])->middlewar
 
 Route::get('/user/{username}', [UserController::class ,'index'])->name('user')->middleware('auth');
 Route::get('/user/{username}/archive/edit/{archiveId}', [UserController::class ,'editArchive'])->middleware('auth');
+
+Route::get('/setting', [SettingController::class ,'index'])->name('setting')->middleware('auth');
+Route::post('/setting', [SettingController::class ,'saveSetting'])->middleware('auth');
 
 Route::get('/amalyaumi', [AmalYaumiController::class ,'index'])->name('amalYaumi')->middleware('auth');
 Route::post('/amalyaumi', [AmalYaumiController::class ,'saveAmalYaumi'])->middleware('auth');
