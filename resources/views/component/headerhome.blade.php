@@ -27,7 +27,7 @@
         </div>
         <div class="">
           <center>
-            <a href="{{url('/setting')}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="amal-yaumi">Setting</a>
+            <a href="{{url('/setting')}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="amal-yaumi">Setting <span style="font-size:6pt; padding:1px; padding-left:2px; padding-right:2px;" class="bg-blue-500 text-white rounded-full">new!</span></a>
           </center>
         </div>
         <div class="">
