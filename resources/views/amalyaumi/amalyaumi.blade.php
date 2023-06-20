@@ -31,7 +31,7 @@
               @if($amalYaumiMaster->status == 1)
                 <span class="text-gray-500">Don't forget to say <span style="font-family: 'Lobster';">Bismillah</span> :)</span>
               @else
-                <span class="text-gray-500">If you are interested to join this Amal Yaumi program, please click <a href="{{url('/setting')}}">here</a> :D</span>
+                <span class="text-gray-500">If you are interested to join this Amal Yaumi program, please click <a href="{{url('/setting')}}">here</a> or go to the setting page :D</span>
               @endif
             </div>
           </div>

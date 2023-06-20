@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster">
-    <title>Setting</title>
+    <title>User Setting</title>
     <link href="{{ asset('css/app.css') }}?t={{time()}}" rel="stylesheet">
     <link rel="manifest" href="{{ asset('manifest.json') }}">
     <link rel="icon" href="{{ asset('icon/favicon.ico') }}" size="48x48" type="image/png">
@@ -27,6 +27,11 @@
           </button>
         </div>
         @endif
+        <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-md font-serif text-gray-600 mt-4">
+          <div class="m-1">
+            <center><b>User Setting</b></center>
+          </div>
+        </div>
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
           <div class="m-1">
             Join Amal Yaumi
