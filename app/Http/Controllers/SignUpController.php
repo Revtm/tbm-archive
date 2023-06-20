@@ -35,7 +35,7 @@ class SignUpController extends Controller
       ]);
 
       $savedAmalYaumiMaster = AmalYaumi::create([
-        'user_id' => $savedUser->id(),
+        'user_id' => $savedUser->id,
       ]);
 
       return redirect()->route('login')->with('success', 'Your account has been successfully registered, please login.');
