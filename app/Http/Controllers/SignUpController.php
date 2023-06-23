@@ -43,7 +43,7 @@ class SignUpController extends Controller
         'user_id' => $savedUser->id,
       ]);
 
-      return redirect()->route('login')->with('success', 'Your account has been successfully registered, please login.');
+      return redirect()->route('login')->with('success', 'Akunmu berhasil didaftarkan, silakan masuk.');
     }
 
     public function signUp(Request $request){

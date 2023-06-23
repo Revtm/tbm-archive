@@ -112,6 +112,17 @@
       </div>
       @endforeach
 
+      @if(count($ownArchives) == 0)
+        <center class="mt-16">
+          <div class="">
+            <img src="{{asset('imgsvg/no_data.svg')}}" width="180px" alt="no_data">
+          </div>
+          <div class="mt-2 text-gray-500 text-sm">
+            Masih kosong nihh</br>kuy tambah arsip baru!
+          </div>
+        </center>
+      @endif
+
       <div class="shadow-md rounded-md content-tbm bg-white">
         <div class="next-button py-2 mx-2">
             <center>
