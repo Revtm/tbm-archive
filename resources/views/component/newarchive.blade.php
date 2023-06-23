@@ -11,7 +11,7 @@
           <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeYoutube()" value="1" checked> Youtube Video</input>
         </div>
         <div class="">
-          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeImage()" value="2"> Gambar Poster <span style="font-size:7pt; padding:1px" class="bg-blue-500 text-white rounded-full"> new! </span></input>
+          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeImage()" value="2"> Gambar <span style="font-size:7pt; padding:1px" class="bg-blue-500 text-white rounded-full"> new! </span></input>
         </div>
       </div>
     </div>
