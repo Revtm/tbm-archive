@@ -4,7 +4,7 @@
   <div class="grid grid-rows-3 gap-2 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
     <div class="grid grid-rows-2">
       <div class="">
-        Archive Type:
+        Tipe Arsip:
       </div>
       <div class="grid grid-cols-2">
         <div class="">
