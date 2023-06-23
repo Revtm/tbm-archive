@@ -11,14 +11,14 @@
           <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeYoutube()" value="1" checked> Youtube Video</input>
         </div>
         <div class="">
-          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeImage()" value="2"> Image <span style="font-size:7pt; padding:1px" class="bg-blue-500 text-white rounded-full"> new! </span></input>
+          <input type="radio" name="archive_type" class="accent-red-500" onclick="onTypeImage()" value="2"> Gambar Poster <span style="font-size:7pt; padding:1px" class="bg-blue-500 text-white rounded-full"> new! </span></input>
         </div>
       </div>
     </div>
     <div class="grid grid-rows-2">
       <div class="">
         <span id="archive-yt-url-label">Youtube Url:</span>
-        <span id="archive-image-label" style="display:none">Image File:</span>
+        <span id="archive-image-label" style="display:none">Unggah (png/jpg max 600 KB):</span>
       </div>
       <div class="grid grid-cols-1">
         <div class="">
@@ -29,11 +29,11 @@
     </div>
     <div class="grid grid-rows-2">
       <div class="">
-        Source:
+        Sumber:
       </div>
       <div class="grid grid-cols-1">
         <div class="">
-          <input autocomplete="off" type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, or social account" value="{{ old('archive_source') }}">
+          <input autocomplete="off" type="text" name="archive_source" style="width:100%" class="source-input accent-red-500 border rounded p-1" placeholder="Original, youtube url, atau social account" value="{{ old('archive_source') }}">
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
   <div class="shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
     <div class="grid grid-rows-1 gap-y-0">
       <div class="my-2">
-        Caption:
+        Caption Arsip:
       </div>
       <div class="">
         <textarea name="archive_caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah...">{{ old('archive_caption')}}</textarea>
@@ -50,7 +50,7 @@
     </div>
     <div class="grid grid-rows-1">
       <div class="">
-        <button type="submit" name="button" style="width:100%" class="archive-button rounded-md bg-red-500 text-sm text-white p-2 my-3">Archive!</button>
+        <button type="submit" name="button" style="width:100%" class="archive-button rounded-md bg-red-500 text-sm text-white p-2 my-3">Arsipkan!</button>
       </div>
     </div>
   </div>

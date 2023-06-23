@@ -111,7 +111,7 @@ class AmalYaumiController extends Controller
                 ]);
 
     return redirect()->route('amalYaumi')
-          ->with("success", "Your amal yaumi was updated successfully, Alhamdulillah");
+          ->with("success", "Amal Yaumi mu berhasil diperbarui, Alhamdulillah");
   }
 
   private function convertAmalStatus($status){

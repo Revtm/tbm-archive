@@ -24,10 +24,10 @@
               @csrf
               @method('POST')
               <input type="email" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email" required>
-              <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password" required>
-              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Login</button>
+              <input type="password" name="password" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="kata sandi" required>
+              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Masuk</button>
             </form>
-            <a class="text-sm" href="{{url('register')}}">Click here to register!</a>
+            <a class="text-sm" href="{{url('register')}}">Klik di sini untuk mendaftar!</a>
             @if(session()->has('success'))
             <div class="alert alert-success alert-dismissible fade show my-1" role="alert">
               {{ session('success') }}

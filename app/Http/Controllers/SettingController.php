@@ -36,7 +36,7 @@ class SettingController extends Controller
       }
 
       return redirect()->route('setting')
-            ->with("success", "Your setting was updated successfully, Alhamdulillah");
+            ->with("success", "Pengaturan berhasil disimpan, Alhamdulillah");
     }
 
     private function convertSettingStatus($status){

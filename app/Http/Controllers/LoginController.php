@@ -34,7 +34,7 @@ class LoginController extends Controller
           return redirect()->route('user', ['username' => $user->name]);
       }
 
-      return back()->with('failed', 'The provided credentials do not match with our records.');
+      return back()->with('failed', 'Email atau kata sandi kamu salah nih :(');
   }
 
   public function logout(Request $request){

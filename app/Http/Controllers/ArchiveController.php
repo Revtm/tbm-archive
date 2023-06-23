@@ -46,7 +46,7 @@ class ArchiveController extends Controller{
   public function deleteArchive(Request $request, $archiveType, $archiveId){
     $findArchive = UserArchive::where('id', $archiveId)
     ->where('user_id', Auth::id())->firstOr(function () {
-      return back()->with("failed", "Cannot find your archive, maybe the specified archive was deleted");
+      return back()->with("failed", "Arsip tidak ditemukan, sepertinya sudah kamu hapus.");
     });
 
     $archiveOrigin = $findArchive->archive_origin;
@@ -56,7 +56,7 @@ class ArchiveController extends Controller{
     ->delete();
 
     if(!$deletedArchive){
-      return back()->withInput()->with("failed", "Failed to delete your archive, please try again in another time.");
+      return back()->withInput()->with("failed", "Gagal menghapus arsip, silakan dicoba lagi ya.");
     }
 
     if($archiveType == 2){
@@ -64,7 +64,7 @@ class ArchiveController extends Controller{
     }
 
     return redirect()->route('user', ['username' => Auth::user()->name])
-    ->with("success", "Your archive was deleted successfully, Alhamdulillah");
+    ->with("success", "Arsipmu berhasil dihapus, Alhamdulillah");
   }
 
   public function editArchive(Request $request, $archiveType, $archiveId){
@@ -75,7 +75,7 @@ class ArchiveController extends Controller{
     ]);
 
     if($firstValidation->fails()){
-      return back()->with("failed", "Please fill the blank form")->withInput();
+      return back()->with("failed", "Mohon isi kolom yang kosong")->withInput();
     }
 
     if($archiveType == 1){ //yt
@@ -84,7 +84,7 @@ class ArchiveController extends Controller{
       ]);
 
       if($secondValidation->fails()){
-        return back()->with("failed", "Please fill the blank form")->withInput();
+        return back()->with("failed", "Mohon isi kolom yang kosong")->withInput();
       }
 
       $expoldedYoutubeUrl = explode("?v=", $request->archive_yt_url);
@@ -99,7 +99,7 @@ class ArchiveController extends Controller{
           if(count($expoldedYoutubeSimpleUrl) == 2){
             $youtubeVideoId = $expoldedYoutubeSimpleUrl[1];
           }else{
-            return back()->withInput()->with("failed", "Invalid youtube url, please input valid url");
+            return back()->withInput()->with("failed", "URL Youtube tidak valid");
           }
         }
       }
@@ -132,11 +132,11 @@ class ArchiveController extends Controller{
     }
 
     if(!$updatedUserArchive){
-      return back()->withInput()->with("failed", "Failed to update your archive, please try again in another time.");
+      return back()->withInput()->with("failed", "Gagal memperbarui arsip, mohon dicoba lagi ya.");
     }
 
     return redirect()->route('user', ['username' => Auth::user()->name])
-    ->with("success", "Your archive was updated successfully, Alhamdulillah");
+    ->with("success", "Arsipmu berhasil diperbarui, Alhamdulillah");
   }
 
   public function archivePost(Request $request){
@@ -148,7 +148,7 @@ class ArchiveController extends Controller{
     ]);
 
     if($firstValidation->fails()){
-      return back()->with("failed", "Please fill the blank form")->withInput();
+      return back()->with("failed", "Mohon isi kolom yang kosong")->withInput();
     }
 
     if($request->archive_type == 1){ //yt
@@ -157,7 +157,7 @@ class ArchiveController extends Controller{
       ]);
 
       if($secondValidation->fails()){
-        return back()->with("failed", "Please fill the blank form")->withInput();
+        return back()->with("failed", "Mohon isi kolom yang kosong")->withInput();
       }
 
       $expoldedYoutubeUrl = explode("?v=", $request->archive_yt_url);
@@ -172,7 +172,7 @@ class ArchiveController extends Controller{
           if(count($expoldedYoutubeSimpleUrl) == 2){
             $youtubeVideoId = $expoldedYoutubeSimpleUrl[1];
           }else{
-            return back()->withInput()->with("failed", "Invalid youtube url, please input valid url");
+            return back()->withInput()->with("failed", "URL Youtube tidak valid");
           }
         }
       }
@@ -198,11 +198,11 @@ class ArchiveController extends Controller{
 
     }else if($request->archive_type == 2){ //img
       $secondValidation = Validator::make($request->all(),[
-          'archive_image' => 'required|image|mimes:png,jpg,jpeg|max:800',
+          'archive_image' => 'required|image|mimes:png,jpg,jpeg|max:600',
       ]);
 
       if($secondValidation->fails()){
-        return back()->withInput()->with("failed", "Failed to archive, please input valid image");
+        return back()->withInput()->with("failed", "Gagal mengarsipkan, silakan masukkan gambar yang valid");
       }
 
       $archiveImage = $request->file('archive_image');
@@ -218,6 +218,6 @@ class ArchiveController extends Controller{
       ]);
     }
 
-    return redirect()->route('user', ['username' => Auth::user()->name])->with("success", "Successfully archived, Alhamdulillah");
+    return redirect()->route('user', ['username' => Auth::user()->name])->with("success", "Berhasil mengarsipkan, Alhamdulillah");
   }
 }

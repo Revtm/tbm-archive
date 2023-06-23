@@ -21,7 +21,12 @@ class SignUpController extends Controller
           'password' => 'required',
           'validation-word' => 'required|captcha'
       ], $messages = [
-        'captcha' => 'The entered validation text is incorrect.'
+        'required' => 'Silakan isi kolom yang kosong ya',
+        'email' => 'Email yang dimasukkan tidak valid',
+        'max' => 'maksimum nama pengguna 15 karakter',
+        'min' => 'minimim nama pengguna 5 karakter',
+        'unique' => 'Email kamu sudah pernah digunakan, ganti yang lain ya',
+        'captcha' => 'Karakter validasi yang dimasukkan salah, mohon dicoba lagi ya :)'
       ]);
 
       if($validation->fails()){

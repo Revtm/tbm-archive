@@ -17,7 +17,7 @@
       <div class="grid grid-rows-3">
         <div class="">
           <center>
-            <a href="{{url('user/' . $user->name)}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button">Profile</a>
+            <a href="{{url('user/' . $user->name)}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="button">Profil</a>
           </center>
         </div>
         <div class="">
@@ -27,7 +27,7 @@
         </div>
         <div class="">
           <center>
-            <a href="{{url('/setting')}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="amal-yaumi">Setting <span style="font-size:6pt; padding:1px; padding-left:2px; padding-right:2px;" class="bg-blue-500 text-white rounded-full">new!</span></a>
+            <a href="{{url('/setting')}}" class="text-sm text-gray-500 p-1 px-4 mx-1" type="button" name="amal-yaumi">Pengaturan <span style="font-size:6pt; padding:1px; padding-left:2px; padding-right:2px;" class="bg-blue-500 text-white rounded-full">new!</span></a>
           </center>
         </div>
         <div class="">
@@ -35,7 +35,7 @@
             <form action="/user/logout/auth" method="post">
               @csrf
               @method('POST')
-              <button class="text-sm text-gray-500 p-1 px-4 mx-1" type="submit" name="logout">Logout</button>
+              <button class="text-sm text-gray-500 p-1 px-4 mx-1" type="submit" name="logout">Keluar</button>
             </form>
           </center>
         </div>
@@ -48,7 +48,7 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Developer Message</h5>
+        <h5 class="modal-title">Pesan Developer</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

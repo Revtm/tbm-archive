@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body class="bg-slate-100">
-    @include('component/header')
+    @include('component/headerhome')
     <div class="container mx-auto main-container mt-14">
       <form id="new-archive-form" action="/user/archive/edit/t/{{$archive->archive_type}}/i/{{$archive->id}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -34,7 +34,7 @@
           </div>
           <div class="grid grid-rows-2">
             <div class="">
-              Source:
+              Sumber:
             </div>
             <div class="grid grid-cols-1">
               <div class="">
@@ -47,7 +47,7 @@
         <div class="shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600">
           <div class="grid grid-rows-1 gap-y-0">
             <div class="my-2">
-              Caption:
+              Caption Arsip:
             </div>
             <div class="">
               <textarea name="archive_caption" rows="3" style="width:100%" class="caption-input accent-red-500 border rounded p-1" placeholder="Bismillah...">{{ $archive->captions }}</textarea>
@@ -55,10 +55,10 @@
           </div>
           <div class="grid grid-rows-2">
             <div class="">
-              <button type="submit" name="button" style="width:100%" class="archive-button rounded-md bg-gray-500 text-sm text-white p-2 my-2">Update</button>
+              <button type="submit" name="button" style="width:100%" class="archive-button rounded-md bg-gray-500 text-sm text-white p-2 my-2">Perbarui</button>
             </div>
             <div class="">
-              <button type="button" name="button" style="width:100%" class="archive-button rounded-md bg-red-500 text-sm text-white p-2 my-2" data-toggle="modal" data-target="#delete-message">Delete</button>
+              <button type="button" name="button" style="width:100%" class="archive-button rounded-md bg-red-500 text-sm text-white p-2 my-2" data-toggle="modal" data-target="#delete-message">Hapus</button>
             </div>
           </div>
         </div>
@@ -68,20 +68,20 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Kamu yakin?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              This will delete the archive permanently, you cannot undo this action.
+              Sekali dihapus maka arsip tidak dapat dikembalikan.
             </div>
             <div class="modal-footer">
-              <button type="button" class="rounded-md bg-gray-500 text-sm text-white p-2" data-dismiss="modal">Cancel</button>
+              <button type="button" class="rounded-md bg-gray-500 text-sm text-white p-2" data-dismiss="modal">Batal</button>
               <form action="/user/archive/del/t/{{$archive->archive_type}}/i/{{$archive->id}}" method="post">
                 @csrf
                 @method('POST')
-                <button type="submit" class="rounded-md bg-red-500 text-sm text-white p-2">Yes, delete now</button>
+                <button type="submit" class="rounded-md bg-red-500 text-sm text-white p-2">Ya, hapus sekarang</button>
               </form>
             </div>
           </div>

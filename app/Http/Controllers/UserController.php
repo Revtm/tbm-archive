@@ -20,7 +20,7 @@ class UserController extends Controller{
         'ownArchivesCount' => $archivesCount,
       ]);
     }
-    return redirect()->route('home')->with('failed', $username.'\'s profile is Private');
+    return redirect()->route('home')->with('failed', 'profil '.$username.' privat');
   }
 
   public function editArchive($userName, $archiveId){
@@ -29,7 +29,7 @@ class UserController extends Controller{
       $archive = ArchiveController::getOneOwnArchive(Auth::id(), $archiveId);
       if($archive == null){
         return redirect()->route('user', ['username' => Auth::user()->name])
-        ->with("failed", "Cannot find your archive, maybe the specified archive was deleted");
+        ->with("failed", "Gagal menemukan arsipmu, sepertinya sudah kamu hapus");
       }
       return view('archive.editarchive', [
         'user' => $user,

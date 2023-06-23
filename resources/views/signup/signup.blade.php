@@ -28,17 +28,17 @@
             <form action="/register" method="post">
               @csrf
               @method('POST')
-              <input type="text" autocomplete="off" name="username" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="username" value="{{ old('username') }}" required>
+              <input type="text" autocomplete="off" name="username" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="nama pengguna" value="{{ old('username') }}" required>
               <input type="email" autocomplete="off" name="email" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="email" value="{{ old('email') }}" required>
-              <input type="password" name="password" autocomplete="off" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="password" required>
+              <input type="password" name="password" autocomplete="off" class="password-input accent-red-300 border rounded-md p-2 my-2" placeholder="kata sandi" required>
               <span id="capt-image">
                 {!! captcha_img() !!}
               </span>
               <span> <i class="fa fa-refresh" id="reload-capt" aria-hidden="true"></i></span>
-              <input type="text" autocomplete="off" name="validation-word" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="type the validation word above" required>
-              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Register</button>
+              <input type="text" autocomplete="off" name="validation-word" class="email-input accent-red-300 border rounded-md p-2 my-2" placeholder="ketik karakter validasi di atas" required>
+              <button type="submit" name="submit" class="login-button rounded-md bg-red-500 text-sm text-white p-2 my-2">Daftar</button>
             </form>
-            <a class="text-sm" href="{{url('/')}}">Click here to Login!</a>
+            <a class="text-sm" href="{{url('/')}}">Klik di sini untuk masuk!</a>
             @if(session()->has('failed'))
             <div style="text-align: left;" class="alert alert-warning alert-dismissible fade show my-1" role="alert">
               <ul class="list-disc">

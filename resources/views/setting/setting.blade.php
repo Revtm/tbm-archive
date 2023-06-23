@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   </head>
   <body class="bg-slate-100">
-    @include('component/header')
+    @include('component/headerhome')
     <form class="setting-form" action="/setting" method="post">
       @csrf
       @method('POST')
@@ -29,7 +29,7 @@
         @endif
         <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-md font-serif text-gray-600 mt-4">
           <div class="m-1">
-            <center><b>User Setting</b></center>
+            <center><b>Pengaturan Pengguna</b></center>
           </div>
         </div>
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
@@ -46,7 +46,7 @@
       </div>
       <div class="container fixed shadow-md bg-white bg-contain bottom-0 left-0 right-0 p-2 md:p-4 z-10">
         <div class="grid grid-rows-1">
-          <button type="submit" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Save</button>
+          <button type="submit" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Simpan</button>
         </div>
       </div>
     </form>

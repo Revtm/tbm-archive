@@ -22,16 +22,16 @@
         <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-4">
           <div class="grid grid-rows-1">
             <div class="grid grid-cols-2">
-              <div class="text-gray-500">Date</div><div class="text-gray-500">: {{date("d M Y")}}</div>
+              <div class="text-gray-500">Tanggal</div><div class="text-gray-500">: {{date("d M Y")}}</div>
             </div>
             <div class="grid grid-cols-2">
-              <div class="text-gray-500">Amal Yaumi Status </div><div>: {!!$amalYaumiMaster->status == 1 ? '<span class="text-green-500">Active</span>' : '<span class="text-yellow-500">Non Active</span>'!!}</div>
+              <div class="text-gray-500">Status </div><div>: {!!$amalYaumiMaster->status == 1 ? '<span class="text-green-500">Active</span>' : '<span class="text-yellow-500">Non Active</span>'!!}</div>
             </div>
             <div class="grid my-1">
               @if($amalYaumiMaster->status == 1)
-                <span class="text-gray-500">Don't forget to say <span style="font-family: 'Lobster';">Bismillah</span> :)</span>
+                <span class="text-gray-500">Jangan lupa baca <span style="font-family: 'Lobster';">Bismillah</span> yaa :)</span>
               @else
-                <span class="text-gray-500">If you are interested to join this Amal Yaumi program, please click <a href="{{url('/setting')}}">here</a> or go to the setting page :D</span>
+                <span class="text-gray-500">Jika kamu tertarik ikut program Amal Yaumi ini, silakan klik <a href="{{url('/setting')}}">di sini</a> :D</span>
               @endif
             </div>
           </div>
@@ -40,9 +40,9 @@
           <div class="grid grid-rows-1 overflow-x-auto">
             <div class="">
               <div class="">
-                <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Last 7 Days Report
-                <span id="open-text-report" class="text-red-500" onclick="onOpenReportTab()">(click to open)</span>
-                <span id="close-text-report" class="text-red-500" onclick="onCloseReportTab()" style="display:none">(click to close)</span>
+                <i class="fa fa-line-chart p-1 text-red-500" aria-hidden="true"></i> Laporan 7 hari terakhir
+                <span id="open-text-report" class="text-red-500" onclick="onOpenReportTab()">(klik untuk buka)</span>
+                <span id="close-text-report" class="text-red-500" onclick="onCloseReportTab()" style="display:none">(klik untuk tutup)</span>
               </div>
               <div class="" id="amal-chart" style="display:none">
                 <canvas id="myChart" height="200px" width="300px"></canvas>
@@ -133,7 +133,7 @@
         </div>
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
           <div class="m-1">
-            Syukur
+            bersyukur
           </div>
           <div class="text-right">
             <input class="accent-red-500 m-2" type="checkbox" name="syukur" id="syukur">
@@ -141,7 +141,7 @@
         </div>
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1">
           <div class="m-1">
-            Do'a for your Parent
+            Do'a untuk kedua orang tua
           </div>
           <div class="text-right">
             <input class="accent-red-500 m-2" type="checkbox" name="doa_for_parent" id="doa_for_parent">
@@ -149,7 +149,7 @@
         </div>
         <div class="grid grid-rows-1 grid-cols-2 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
           <div class="m-1">
-            Do'a for TBM
+            Do'a untuk saudara
           </div>
           <div class="text-right">
             <input class="accent-red-500 m-2" type="checkbox" name="doa_for_friend" id="doa_for_friend">
@@ -159,9 +159,9 @@
         <div class="grid grid-rows-1 grid-cols-1 shadow-md rounded-md user-profile bg-white text-sm font-serif text-gray-600 mt-1" style="margin-bottom: 4rem">
           <div class="m-1">
             @if($amalYaumiMaster->status == 1)
-              The system is still processing your form. Please reload this page after 5-10 minutes.
+              Sistem masih memproses form amal yaumi kamu, sabar ya :)
             @else
-              Your amal yaumi status is non-active
+              Status Amal Yaumi mu masih non-active nih  :(
             @endif
           </div>
         </div>
@@ -169,7 +169,7 @@
       </div>
       <div class="container fixed shadow-md bg-white bg-contain bottom-0 left-0 right-0 p-2 md:p-4 z-10">
         <div class="grid grid-rows-1">
-          <button type="submit" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Save</button>
+          <button type="submit" name="button" style="width:100%" class="rounded-md bg-red-500 text-sm text-white p-2">Simpan</button>
         </div>
       </div>
     </form>
@@ -186,7 +186,7 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'Total Amal',
+                label: 'Total Dikerjakan',
                 backgroundColor: 'rgb(220, 53, 69)',
                 borderColor: 'rgb(220, 53, 69)',
                 data: counts,
