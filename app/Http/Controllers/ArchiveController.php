@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +19,22 @@ class ArchiveController extends Controller{
     return $archives;
   }
 
+  public function getUrlPageTitle(Request $request){
+    if(!Auth::guard('api')->check()){
+      return response()->json(['message' => 'unauthorized'], 401);
+    }
+    $response = Http::get('https://rumaysho.com/36680-bulughul-maram-akhlak-tanda-kita-telah-menjadi-budak-harta.html');
+    $title = preg_match('/<title>(.+)<\/title\>/', $response, $matches);
+    if(count($matches) > 1){
+      return response()->json(['title' => $matches[1]], 200);
+    }
+    return response()->json(['title' => ''], 200);
+  }
+
   public function incrementReaction($archiveId){
+    if(!Auth::guard('api')->check()){
+      return response()->json(['message' => 'unauthorized'], 401);
+    }
     $updatedUserArchive = UserArchive::find($archiveId);
     $updatedUserArchive->likes = $updatedUserArchive->likes + 1;
     $updatedUserArchive->save();

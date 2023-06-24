@@ -32,7 +32,7 @@
         </div>
         <div class="">
           <center>
-            <form action="/user/logout/auth" method="post">
+            <form id="logout-form" action="/user/logout/auth" method="post" onsubmit="logoutClick()">
               @csrf
               @method('POST')
               <button class="text-sm text-gray-500 p-1 px-4 mx-1" type="submit" name="logout">Keluar</button>
@@ -61,6 +61,9 @@
 </div>
 
 <script>
+function logoutClick(){
+    localStorage.removeItem("token");
+}
 function sidebarOpen() {
   document.getElementById("tbm-sidebar").style.width = "100%";
   document.getElementById("tbm-sidebar").style.display = "block";

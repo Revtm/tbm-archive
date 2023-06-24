@@ -24,3 +24,4 @@ Route::post('/usr/signup', [SignUpController::class ,'signUp']);
 Route::get('/capt/reload', [SignUpController::class ,'reloadCapt']);
 
 Route::post('/usr/reaction/{archiveId}', [ArchiveController::class ,'incrementReaction']);
+Route::get('/url-page-title', [ArchiveController::class ,'getUrlPageTitle']);
