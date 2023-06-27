@@ -17,7 +17,7 @@ class AmalYaumiController extends Controller
     $amalYaumiMaster = AmalYaumi::where('user_id', Auth::id())->get();
 
     $amalYaumiReport = AmalYaumiMapping::where('user_id', Auth::id())
-                      ->where('do_date', '>=', date_format($doDateLast,"Y-m-d"))
+                      ->where('do_date', '>', date_format($doDateLast,"Y-m-d"))
                       ->orderBy('do_date')
                       ->get();
 
