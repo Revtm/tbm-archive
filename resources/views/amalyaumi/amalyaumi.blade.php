@@ -179,9 +179,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}?t={{time()}}"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-          $("#logout-form").prop("action", "/user/logout/auth?token=" + localStorage.getItem('token'));
-        });
         var labels =  {{ Js::from($amalYaumiReport['labels']) }};
         var counts =  {{ Js::from($amalYaumiReport['counts']) }};
 

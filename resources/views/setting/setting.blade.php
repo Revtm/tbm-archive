@@ -57,7 +57,6 @@
     <script type="text/javascript" src="{{ asset('js/app.js') }}?t={{time()}}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-          $("#logout-form").prop("action", "/user/logout/auth?token=" + localStorage.getItem('token'));
           $("#join-amal-yaumi").prop("checked", {{$amalYaumiStatus}});
         });
     </script>

@@ -56,10 +56,6 @@
     <script type="text/javascript" src="{{ asset('js/app.js') }}?t={{time()}}"></script>
     @livewireScripts
     <script>
-      $(document).ready(function () {
-        $("#logout-form").prop("action", "/user/logout/auth?token=" + localStorage.getItem('token'));
-      });
-
       function copySource(source){
         navigator.clipboard.writeText(source);
         alert("Source copied: " + source);

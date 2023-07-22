@@ -101,9 +101,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}?t={{time()}}"></script>
     <script type="text/javascript">
-    $(document).ready(function () {
-      $("#logout-form").prop("action", "/user/logout/auth?token=" + localStorage.getItem('token'));
-    });
     function onChangeYoutubeUrl(url) {
       document.getElementById("archive-yt-url").style.display = "block";
     }

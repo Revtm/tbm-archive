@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Livewire;
-
+use App\Http\Controllers\ArchiveController;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class UserArchiveCaption extends Component
@@ -16,7 +17,7 @@ class UserArchiveCaption extends Component
     /**
      * @return void
      */
-    public function incrementReaction($archiveId){
+    public function incrementOwnReaction($archiveId){
       if(Auth::check()){
         $this->archive->likes= ArchiveController::countReaction($archiveId);
       }
