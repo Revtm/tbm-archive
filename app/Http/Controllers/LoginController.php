@@ -27,11 +27,11 @@ class LoginController extends Controller
           'password' => ['required'],
       ]);
 
-      if (Auth::attempt($credentials) && $token = Auth::guard('api')->attempt($credentials)) {
+      if (Auth::attempt($credentials)) {
           $request->session()->regenerate();
           $user = Auth::user();
 
-          return redirect()->route('user', ['username' => $user->name])->with('token', $token);
+          return redirect()->route('user', ['username' => $user->name]);
       }
 
       return back()->with('failed', 'Email atau kata sandi kamu salah nih :(');
