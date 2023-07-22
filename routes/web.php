@@ -24,7 +24,7 @@ Route::get('/', [LoginController::class ,'index'])->name('login');
 Route::get('/register', [SignUpController::class ,'index'])->name('registerWeb');
 Route::post('/register', [SignUpController::class ,'signUpWeb']);
 Route::post('/user/login/auth', [LoginController::class ,'authenticate']);
-Route::post('/user/logout/auth' , [LoginController::class ,'logout'])->middleware('auth');;
+Route::post('/user/logout/auth' , [LoginController::class ,'logout'])->middleware('auth');
 
 Route::get('/user/{username}', [UserController::class ,'index'])->name('user')->middleware('auth');
 Route::get('/user/{username}/archive/edit/{archiveId}', [UserController::class ,'editArchive'])->middleware('auth');

@@ -43,6 +43,15 @@ class ArchiveController extends Controller{
     return response()->json(['reaction' => $saved->likes], 200);
   }
 
+  public function countReaction($archiveId){
+    $updatedUserArchive = UserArchive::find($archiveId);
+    $updatedUserArchive->likes = $updatedUserArchive->likes + 1;
+    $updatedUserArchive->save();
+    $saved = UserArchive::find($archiveId);
+
+    return $saved->likes;
+  }
+
   public function getOneOwnArchive($userId, $archiveId){
     $archive = UserArchive::where('user_id', '=', $userId)
             ->where('id', '=', $archiveId)->first();
